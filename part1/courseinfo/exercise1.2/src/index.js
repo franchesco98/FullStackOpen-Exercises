@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 const App = () => {
-	const contents = {
-		course: "Half Stack application development",
+	const course = {
+		name: "Half Stack application development",
 		parts: [
 			{
 				title: "Fundamentals of React",
@@ -22,45 +22,45 @@ const App = () => {
 	
 	return (
 	  <div>
-		<Header course={contents.course} />
-		<Content content={contents.parts} />
-		<Total exercises={contents.parts[0].exercises + contents.parts[1].exercises + contents.parts[2].exercises}/>
+		<Header course={course.name} />
+		<Content parts={course.parts} />
+		<Total exercises={course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises}/>
 	  </div>	
 	);
 }
 
-const Header = (props) => {
+const Header = ({ course }) => {
 	return (
 	  <>
-		<h1>{props.course}</h1>
+		<h1>{course}</h1>
 	  </>
 	);
 }
 
-const Content = (props) => {
+const Content = ({ parts }) => {
 	return (
 	  <>
-		<Part title={props.content[0].title} exercises={props.content[0].exercises} />
-		<Part title={props.content[1].title} exercises={props.content[1].exercises} />
-		<Part title={props.content[2].title} exercises={props.content[2].exercises} />
+		<Part title={parts[0].title} exercises={parts[0].exercises} />
+		<Part title={parts[1].title} exercises={parts[1].exercises} />
+		<Part title={parts[2].title} exercises={parts[2].exercises} />
 	  </>
 	);
 }
 
-const Part = (props) => {
+const Part = ({ title, exercises }) => {
 	return (
 	  <>
 	  	<p>
-			{props.title} {props.exercises}
+			{title} {exercises}
 		</p>
 	  </>
 	);
 }
 
-const Total = (props) => {
+const Total = ({ exercises }) => {
 	return (
 	  <>
-	  	<p>Number of exercises {props.exercises}</p>
+	  	<p>Number of exercises {exercises}</p>
 	  </>
 	);
 }
